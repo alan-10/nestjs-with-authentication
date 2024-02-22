@@ -5,7 +5,7 @@ import { Controller, Get } from '@nestjs/common';
 export class UserController {
   @Get()
   findAll(){
-    return 'This action returns all users';
+    return `his action returns all users ${process.env.DATABASE_NAME}`;
   }
 
 }
