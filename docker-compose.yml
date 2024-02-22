@@ -1,0 +1,23 @@
+version: '3.9'
+services:
+  api:
+    build: .
+    volumes:
+      - .:/usr/src/app
+    container_name: docker-node-api
+    restart: always
+    ports:
+      - 8001:3000
+    command: bash -c /usr/src/app/start.sh
+  db-postgres:
+    image: postgres:15.3-alpine
+    container_name: dcs-postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: 123
+      POSTGRES_USER: postgres
+      POSTGRES_DB: testea
+    ports:
+      - 5432:5432
+    volumes:
+      - .:/data/postgres
