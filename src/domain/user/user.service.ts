@@ -15,6 +15,7 @@ export class UserService {
 
   async create(user: CreateUserDTO): Promise<User> {
 
+
     const userAlreadExists = await this.findUserByEmail(user.email);
 
     if (userAlreadExists) {
@@ -36,6 +37,11 @@ export class UserService {
   }
 
   async findUserByEmail(email: string): Promise<User> {
+
+    if (!email) {
+      throw new HttpException('invalid email',HttpStatus.NOT_FOUND);
+    }
+
     return await this.userRepository.findOneBy({ email: email });
   }
 

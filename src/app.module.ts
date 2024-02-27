@@ -11,7 +11,7 @@ import configuration from './config/configuration';
     ConfigModule.forRoot({
       envFilePath: ['.env.development.env'],
       isGlobal: true, 
-      load:[configuration]
+      // load:[configuration]
     }),
     TypeOrmModule.forRootAsync({
       imports:[ConfigModule],
