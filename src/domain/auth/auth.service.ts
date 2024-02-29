@@ -14,8 +14,6 @@ export class AuthService {
   async sinIn(email: string, password: string) {
     
     const user = await this.userService.findUserByEmail(email);
-
-    console.log('alan', process.env.JWT_SECRET);
     
     if (!user) {
       throw new HttpException('Email or Password invald', HttpStatus.UNAUTHORIZED);
